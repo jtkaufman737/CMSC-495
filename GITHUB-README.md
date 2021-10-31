@@ -32,6 +32,7 @@ When you make changes and are ready for the code to be synced to the main branch
 ```
 git add .                                                # tells git to include all changes for the save
 git commit -m "a message about what change I just made"  # committing = saving 
+git pull --rebase origin main                            # get the latest from main one last time 
 git push origin new-feature                              # this pushes your "branch" or folder to Github
 ```
 

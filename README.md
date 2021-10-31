@@ -8,7 +8,26 @@ This project aims to provide a trello-like interface for [fault tree analysis](h
 
 # Project Setup and Dependencies 
 
-TBD 
+For *nix systems you should already have python installed. You can confirm by running `python3 --version`. If you do not have python3 you will need to [install it](https://www.python.org/downloads/).
+
+You will also need the Python package manager, pip. You can run `pip --version` from the command line, and if needed install it [here](https://pip.pypa.io/en/stable/installation/).
+
+Once you have python installed, from the project directory run the following steps.
+```
+python3 -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+```
+The lines above takes care of installing all the python libraries needed to run our web server. "venv" is a virtual environment for those dependencies to be installed so that they won't conflict with anything else on your system. 
+
+Next, we are going to follow the Flask quickstart guide to run a minimal web server.
+```
+export FLASK_APP=app       # tells Flask to use our app.py file 
+python -m flask            
+flask run                  # will run a local server at localhost:5000 
+```
+
+From there, you can see the local code by directing a browser to localhost:5000. This is what you will use to locally develop endpoint logic. 
 
 # Future Improvements 
 

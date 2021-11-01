@@ -127,3 +127,30 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# Begin Vue ignored files
+.DS_Store
+ui/node_modules
+ui/dist
+
+ui/tests/e2e/videos
+ui/tests/e2e/screenshots
+
+# local env files
+ui/.env.local
+ui/.env.*.local
+
+# Log files
+ui/npm-debug.log*
+ui/yarn-debug.log*
+ui/yarn-error.log*
+ui/pnpm-debug.log*
+
+# Editor directories and files
+ui/.idea
+ui/.vscode
+ui/*.suo
+ui/*.ntvs*
+ui/*.njsproj
+ui/*.sln
+ui/*.sw?

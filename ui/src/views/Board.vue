@@ -8,6 +8,7 @@
 
 <script>
 import cy from 'cytoscape';
+import ext from 'cy-ext';
 import Symbol from '@/components/Symbol.vue'
 
 export default {
@@ -34,6 +35,7 @@ export default {
     buildTree() {
       const cytoscape = cy({
         container: document.getElementById("cy"),
+        userZoomingEnabled: false,
         elements: [
           {  
             data: { id: "a", type: "Event/intermediate", description: "Navigate to /about"}
@@ -65,13 +67,27 @@ export default {
           {
             selector: 'node',
             style: {
-              'height': '200px',
-              'width': '200px',
-              'label': 'data(description)'
+              'shape': 'round-rectangle',
+              'border-width':'20px',
+              'border-style':'solid',
+              'border-color':'#104cfb',
+              'border-opacity':'0.5',
+              'background-color':'white',
+              'height': '400px',
+              'width': '400px',
+              'label': 'data(description)',
+              'text-wrap': 'wrap',
+              'text-halign': 'center',
+              'text-valign': 'center',
+              'padding':'15px',
+              'font-family':'-apple-system,BlinkMacSystemFont,Avenir,"Avenir Next","Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Fira Sans","Droid Sans","Helvetica Neue",sans-serif',
+              'font-size':'3.5em',
             }
           },
         ]
       })
+
+      cy.use(ext);
     }
   },
   mounted() {

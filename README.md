@@ -40,6 +40,12 @@ npm install
 npm run serve
 ```
 
+## Test db 
+
+Download a local version of MySQL for your system. Using `root` user set a password `mysqluser`. From the command line run `sudo mysql -p` and then enter first your **system** password and then the **db password**, `mysqluser`. From there you are in the SQL shell and can run `CREATE DATABASE fault_tree;`. You will need to do that BEFORE running `flask run` which will launch the db building script. 
+
+*Note - this is a temporary local database setup until we get on AWS, to facilitate development of endpoints* 
+
 # Future Improvements 
 
 TBD 

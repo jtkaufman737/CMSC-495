@@ -6,9 +6,9 @@ app = Flask(__name__)
 
 db = create_db(app)
 conn = db.connect() 
-cursor = conn.cursor() 
 
-seed_db(cursor)
+seed_db(conn)
+
 
 @app.route("/")
 def index():

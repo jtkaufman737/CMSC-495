@@ -40,6 +40,10 @@ npm install
 npm run serve
 ```
 
+## Test db 
+
+Download a local version of MySQL for your system. Using `root` user set a password `mysqluser`. From the command line as root user, run `CREATE DATABASE fault_tree;`
+
 # Future Improvements 
 
 TBD 

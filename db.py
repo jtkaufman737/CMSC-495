@@ -13,7 +13,6 @@ def create_db(app):
 
 def seed_db(conn):
     try:
-        cursor = conn.cursor()
         # Split statements because for this middleware, cursor breaks on ";"
         statements = ['''
         CREATE TABLE IF NOT EXISTS board ( 
@@ -57,6 +56,8 @@ def seed_db(conn):
             FOREIGN KEY(destination_symbol) REFERENCES symbol(id) ON DELETE CASCADE ON UPDATE CASCADE
         )''',
         "INSERT INTO board(name, description) VALUES('test_board', 'test_board');",
+        "INSERT INTO board(name, description) VALUES('test_board', 'test_board');",
+        "INSERT INTO board(name, description) VALUES('test_board', 'test_board');",
         "INSERT INTO symbol_type(type) VALUES('Event/basic');",
         "INSERT INTO symbol_type(type) VALUES('Event/conditioning');",
         "INSERT INTO symbol_type(type) VALUES('Event/intermediate');",
@@ -86,9 +87,12 @@ def seed_db(conn):
         "SELECT * FROM board;"]
 
         for statement in statements:
+            cursor = conn.cursor()
             print(f"Executing {statement}")
             cursor.execute(statement)
             data = cursor.fetchall()
+            conn.commit()
+            cursor.close()
             print(data)
     except Exception as e: 
         print(e)

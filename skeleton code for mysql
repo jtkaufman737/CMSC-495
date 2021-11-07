@@ -1,0 +1,62 @@
+#BOARD TABLE
+create table Board(
+id INT NOT NULL primary key AUTO_INCREMENT,
+name varchar(50),
+description varchar(50)
+);
+#TEST CODE
+insert into Board(id, name) values(1, "John");
+
+insert into Board(name, description) values
+    ('Bill', 'manager'), ('Jane', 'employee'), ('Sue', 'customer');
+
+select * from Board
+#END OF TEST
+
+
+#BOARD SYMBOLS
+create table Board_symbols(
+    id INT PRIMARY KEY,
+    board_id INT, 
+    symbol_id INT,
+    FOREIGN KEY(board_id)
+        REFERENCES board(id),
+    FOREIGN KEY (symbol_id)
+        REFERENCES symbols(id)
+    
+);
+#insert into Board_symbols(id) values(1);
+#select * from Board_symbols;
+
+
+#Symbols
+create table symbols(
+    id INT PRIMARY KEY,
+    name varchar(50), 
+    type_of_symbol varchar(20),
+    #child_board
+    FOREIGN KEY(type_of_symbol)
+        REFERENCES symbol_types(type_of_symbol)
+    
+);
+
+#symbol_types
+create table symbol_types(
+    id INT,
+    type_of_symbol varchar(20),
+    FOREIGN KEY(id)
+        REFERENCES symbols(id)
+    
+);
+
+#symbol_connections
+create table symbol_connections(
+    board_id INT,
+    #start_symbol varchar(20),
+    #destination_symbol varchar(20),
+    
+    FOREIGN KEY(board_id)
+        REFERENCES board(id)
+        
+    
+);

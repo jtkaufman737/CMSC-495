@@ -40,14 +40,13 @@ def get_items():
     return flask.jsonify(data_dict)
 
 """
-@app.route("/boards/<id>", methods=["DELETE"])
+@app.route("/api/boards/<id>", methods=["DELETE"])
 def delete_board(id):
     data_dict = {} 
     cursor = conn.cursor() 
 
     try:
-        cursor.execute("DELETE FROM board WHERE id=%s", (id))
-        
+        cursor.execute("DELETE FROM board WHERE id=%s", (id))      
         
         data_dict["statusCode"] = 202 
         data_dict["status"] = f"Deleted board {id}"

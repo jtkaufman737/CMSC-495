@@ -28,6 +28,8 @@ def get_items():
         # will assign variable "item_name" to equal data[0], and variable "item_color" to equal data[1]
         # from there, you can build a python dictionary 
 
+        data_dict["statusCode"] = 200
+        data_dict["status] = "success"
         data_dict["item_name"] = item_name
         data_dict["item_color"] = item_color 
     

@@ -47,7 +47,7 @@ def delete_board(id):
 
     try:
         cursor.execute("DELETE FROM board WHERE id=%s", (id))      
-        
+       
         data_dict["statusCode"] = 202 
         data_dict["status"] = f"Deleted board {id}"
     except Exception as e:

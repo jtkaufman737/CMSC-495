@@ -8,7 +8,6 @@
 
 <script>
 import cy from 'cytoscape';
-import ext from 'cy-ext';
 import Symbol from '@/components/Symbol.vue'
 
 export default {
@@ -87,7 +86,6 @@ export default {
         ]
       })
 
-      cy.use(ext);
     }
   },
   mounted() {

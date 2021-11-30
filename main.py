@@ -1,7 +1,7 @@
 import json 
 
 import flask 
-from flask import Flask 
+from flask import Flask, request 
 
 from db import create_db, seed_db 
 from utils import build_data_dict, build_errors
@@ -166,6 +166,43 @@ def create_symbols():
                 "name": new_row[1],
                 "description": new_row[2],
                 "type": new_row[3] 
+            })
+
+    except Exception as e: 
+        data_dict = build_errors(data_dict, e)
+
+    return flask.jsonify(data_dict)
+
+
+@app.route("/api/symbols/<id>", methods=["PUT","PATCH"])
+def update_symbols(id):
+    """ Returns all available boards """
+    data_dict = build_data_dict(status="Updated successfully", status_code=204, data=True) 
+
+    try:
+        # ensure required fields are present 
+        data = request.json
+        name = data["name"]
+        description = data["description"]
+        symbol_type = data["type"]
+
+        with conn.cursor() as cursor: 
+            cursor.execute(
+                """UPDATE symbol
+                   SET name=%s, description=%s, type=%s
+                   WHERE id=%s
+                """,
+                (name, description, symbol_type, id)
+            )
+
+            cursor.execute("SELECT * FROM symbol WHERE id=%s", (id,))
+            udpated_row = cursor.fetchone() 
+            
+            data_dict["data"].append({
+                "id": udpated_row[0],
+                "name": udpated_row[1],
+                "description": udpated_row[2],
+                "type": udpated_row[3] 
             })
 
     except Exception as e: 

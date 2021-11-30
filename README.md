@@ -26,7 +26,7 @@ The lines above takes care of installing all the python libraries needed to run 
 
 Next, we are going to follow the Flask quickstart guide to run a minimal web server.
 ```
-export FLASK_APP=app       # tells Flask to use our app.py file 
+export FLASK_APP=main       # tells Flask to use our app.py file 
 python -m flask            
 flask run                  # will run a local server at localhost:5000 
 ```

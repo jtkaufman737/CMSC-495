@@ -8,6 +8,8 @@ This project aims to provide a trello-like interface for [fault tree analysis](h
 
 # Project Setup and Dependencies 
 
+**Quick Note**: Unfortunately, I _do not have a Windows machine to practice on_ so these instructions are specific to flavors of Linux. I tried looking at how to do it with Docker, but even that runs into limitations without me giving someone a lot of complicated UI instructions since apparently windows cmd is not the normal way people interface with Docker on that OS. Long story short, I tried but for now *nix it is. 
+
 ## Backend 
 
 For *nix systems you should already have python installed. You can confirm by running `python3 --version`. If you do not have python3 you will need to [install it](https://www.python.org/downloads/).

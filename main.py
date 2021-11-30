@@ -4,6 +4,7 @@ import flask
 from flask import Flask 
 
 from db import create_db, seed_db 
+from utils import build_data_dict, build_errors
 
 app = Flask(__name__)
 
@@ -52,7 +53,7 @@ def get_boards():
     """ Returns all available boards """
     data_dict = build_data_dict(status="Success", status_code=200, data=True)
 
-    with db.cursor() as cursor:
+    with conn.cursor() as cursor:
         try:
             cursor.execute("SELECT * FROM board")      
             cursor.fetchone()
@@ -74,7 +75,7 @@ def get_boards():
 def delete_board(id):
     """ Deletes a board """
     data_dict = build_data_dict(status=f"Deleted board {id}", status_code=202, data=False)
-    cursor = db.cursor() 
+    cursor = conn.cursor() 
 
     try:
         cursor.execute("DELETE FROM board WHERE id=%s", (id))      
@@ -94,7 +95,7 @@ def get_symbol_types():
     """ Returns all available symbols types - gates, events, transfers"""
     data_dict = build_data_dict(status="Success", status_code=200, data=True)
 
-    with db.cursor() as cursor:
+    with conn.cursor() as cursor:
         try:
             cursor.execute("SELECT * FROM symbol_type")      
             cursor.fetchone()
@@ -117,7 +118,7 @@ def get_symbols():
     data_dict = build_data_dict(status="Success", status_code=200, data=True)
 
     try:
-        with db.cursor() as cursor:
+        with conn.cursor() as cursor:
             cursor.execute("SELECT * FROM symbol;")      
             cursor.fetchone()
 
@@ -147,7 +148,7 @@ def create_symbols():
         description = data["description"]
         symbol_type = data["type"]
 
-        with db.cursor() as cursor: 
+        with conn.cursor() as cursor: 
             cursor.execute(
                 """INSERT INTO symbol(name, description, type) 
                    VALUES(%s, %s, %s)
@@ -177,7 +178,7 @@ def create_symbols():
 def delete_symbol(id):
     """ Deletes a board """
     data_dict = build_data_dict(status=f"Deleted symbol {id}", status_code=202, data=False)
-    cursor = db.cursor() 
+    cursor = conn.cursor() 
 
     try:
         cursor.execute("DELETE FROM symbol WHERE id=%s", (id))      
